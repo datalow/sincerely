@@ -1,35 +1,44 @@
-"use strict";
+import test from 'ava'
 
-const { ServiceBroker } = require("moleculer");
-const { ValidationError } = require("moleculer").Errors;
-const TestService = require("../../services/greeter.service");
+import { ServiceBroker, Errors } from 'moleculer'
 
-describe("Test 'greeter' service", () => {
-	let broker = new ServiceBroker({ logger: false });
-	broker.createService(TestService);
+import GreeterService from '../../services/greeter.service'
 
-	beforeAll(() => broker.start());
-	afterAll(() => broker.stop());
+test.beforeEach(async t => {
+  const broker = new ServiceBroker({ logger: false })
+  broker.createService(GreeterService)
 
-	describe("Test 'greeter.hello' action", () => {
+  await broker.start()
 
-		it("should return with 'Hello Moleculer'", () => {
-			expect(broker.call("greeter.hello")).resolves.toBe("Hello Moleculer");
-		});
+  t.context.broker = broker
+})
 
-	});
+test.afterEach(async t => {
+  await t.context.broker.stop()
+})
 
-	describe("Test 'greeter.welcome' action", () => {
+test('`hello` action', async t => {
+  const { broker } = t.context
 
-		it("should return with 'Welcome'", () => {
-			expect(broker.call("greeter.welcome", { name: "Adam" })).resolves.toBe("Welcome, Adam");
-		});
+  await broker
+    .call('greeter.hello')
+    .then(res => {
+      t.is(res, 'Hello Moleculer')
+    })
+})
 
-		it("should reject an ValidationError", () => {
-			expect(broker.call("greeter.welcome")).rejects.toBeInstanceOf(ValidationError);
-		});
+test('`welcome` action', async t => {
+  const { broker } = t.context
 
-	});
+  await broker
+    .call('greeter.welcome', { name: 'Adam' })
+    .then(res => {
+      t.is(res, 'Welcome, Adam')
+    })
 
-});
-
+  await t.throwsAsync(
+    () => broker.call('greeter.welcome'),
+    Errors.ValidationError,
+    'missing name'
+  )
+})

@@ -6,9 +6,11 @@
     "dev": "moleculer-runner --repl --hot services",
     "start": "moleculer-runner",
     "cli": "moleculer connect NATS",
-    "ci": "jest --watch",
-    "test": "jest --coverage",
-    "lint": "eslint services",
+    "test": "ava",
+    "test:coverage": "nyc ava -v",
+    "test:watch": "ava -vw",
+    "lint": "eslint --fix moleculer.config.js services/**/*.js",
+    "lint:staged": "lint-staged",
     "dc:up": "docker-compose up --build -d",
     "dc:down": "docker-compose down"
   },
@@ -18,10 +20,16 @@
   ],
   "author": "",
   "devDependencies": {
-    "eslint": "^6.1.0",
-    "jest": "^24.8.0",
-    "jest-cli": "^24.8.0",
-    "moleculer-repl": "^0.5.7"
+    "ava": "^2.4.0",
+    "eslint": "^6.7.2",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "lint-staged": "^9.4.2",
+    "moleculer-repl": "^0.5.7",
+    "nyc": "^14.1.1"
   },
   "dependencies": {
     "moleculer-web": "^0.8.5",
@@ -30,13 +38,5 @@
   },
   "engines": {
     "node": ">= 8.x.x"
-  },
-  "jest": {
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node",
-    "rootDir": "./services",
-    "roots": [
-      "../test"
-    ]
   }
 }
