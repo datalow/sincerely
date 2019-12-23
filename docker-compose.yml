@@ -1,0 +1,29 @@
+version: "3.2"
+
+services:
+  nats:
+    image: nats
+    ports:
+      - "4222:4222"
+
+  service-broker-api-gateway:
+    build:
+      context: ./packages/service-broker-gateway-api
+    env_file: docker-compose.env
+    environment:
+      PORT: 3000
+    links:
+      - nats
+    depends_on:
+      - nats
+
+  service-broker-node-greeter:
+    build:
+      context: ./packages/service-broker-node
+    env_file: docker-compose.env
+    environment:
+      SERVICES: greeter
+    links:
+      - nats
+    depends_on:
+      - nats

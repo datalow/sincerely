@@ -1,15 +1,14 @@
 {
-  "name": "@datalow/sincerely-example-package",
+  "name": "@datalow/sincerely-service-broker-node",
   "version": "0.0.0",
-  "private": true,
-  "description": "Examply package",
-  "author": "owl123456 <mushegh.antaranyan@dataowl.io>",
+  "description": "Services broker with Moleculer framework",
   "license": "MIT",
-  "main": "index.js",
   "scripts": {
+    "dev": "moleculer-runner --repl --hot services",
+    "start": "moleculer-runner",
     "test": "ava",
     "test:coverage": "nyc ava -v",
-    "lint": "eslint --fix index.js src/**/*.js",
+    "lint": "eslint --fix services/**/*.js",
     "lint:staged": "lint-staged",
     "precommit": "npm run lint:staged",
     "prepush": "npm run lint && npm test"
@@ -18,11 +17,16 @@
     "ava": "^2.4.0",
     "eslint": "^6.7.2",
     "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "lint-staged": "^9.4.2",
+    "moleculer-repl": "^0.6.2",
     "nyc": "^14.1.1"
+  },
+  "dependencies": {
+    "@datalow/sincerely-service-module-greeter": "*",
+    "moleculer": "^0.13.12"
   }
 }

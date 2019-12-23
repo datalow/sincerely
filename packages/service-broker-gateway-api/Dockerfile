@@ -2,8 +2,7 @@ FROM node:latest
 
 ENV NODE_ENV=production
 
-RUN mkdir /app
-WORKDIR /app
+WORKDIR /var/app
 
 COPY package.json ./
 

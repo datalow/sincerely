@@ -13,9 +13,10 @@
  *  via environment variables, use the `MOL_` prefix and double underscore `__` for nested properties in .env file.
  *  For example, to set the cacher prefix to `MYCACHE`, you should declare an env var as `MOL_CACHER__OPTIONS__PREFIX=MYCACHE`.
  */
+
 module.exports = {
   // Namespace of nodes to segment your nodes on the same network.
-  namespace: '',
+  namespace: 'msg',
   // Unique node identifier. Must be unique in a namespace.
   nodeID: null,
 
@@ -30,7 +31,7 @@ module.exports = {
 
   // Define transporter.
   // More info: https://moleculer.services/docs/0.13/networking.html
-  transporter: 'NATS',
+  transporter: 'TCP',
 
   // Define a serializer.
   // Available values: 'JSON', 'Avro', 'ProtoBuf', 'MsgPack', 'Notepack', 'Thrift'.

@@ -2,11 +2,11 @@ import test from 'ava'
 
 import { ServiceBroker, Errors } from 'moleculer'
 
-import GreeterService from '../../services/greeter.service'
+import Service from '../..'
 
 test.beforeEach(async t => {
   const broker = new ServiceBroker({ logger: false })
-  broker.createService(GreeterService)
+  broker.createService(Service)
 
   await broker.start()
 
@@ -17,7 +17,7 @@ test.afterEach(async t => {
   await t.context.broker.stop()
 })
 
-test('`hello` action', async t => {
+test('`hello`', async t => {
   const { broker } = t.context
 
   await broker
@@ -27,7 +27,7 @@ test('`hello` action', async t => {
     })
 })
 
-test('`welcome` action', async t => {
+test('`welcome`', async t => {
   const { broker } = t.context
 
   await broker
