@@ -1,0 +1,36 @@
+{
+  "name": "@datalow/sincerely-service-broker-gateway-api",
+  "version": "0.0.0",
+  "description": "Services broker for API gateway with Moleculer framework",
+  "license": "MIT",
+  "scripts": {
+    "dev": "moleculer-runner --repl --hot services api",
+    "start": "moleculer-runner services api",
+    "test": "ava",
+    "test:coverage": "nyc ava -v",
+    "lint": "eslint --fix services/**/*.js",
+    "lint:staged": "lint-staged",
+    "precommit": "npm run lint:staged",
+    "prepush": "npm run lint && npm test"
+  },
+  "devDependencies": {
+    "ava": "^2.4.0",
+    "delay": "^4.3.0",
+    "eslint": "^6.7.2",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "execa": "^4.0.0",
+    "get-port": "^5.1.0",
+    "lint-staged": "^9.4.2",
+    "moleculer-repl": "^0.6.2",
+    "node-fetch": "^2.6.0",
+    "nyc": "^14.1.1"
+  },
+  "dependencies": {
+    "moleculer": "^0.13.12",
+    "moleculer-web": "^0.8.5"
+  }
+}
