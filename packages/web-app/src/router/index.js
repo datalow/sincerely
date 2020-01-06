@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/message-board',
     name: 'MessageBoard',
     component: MessageBoard
   }

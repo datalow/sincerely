@@ -2,13 +2,12 @@
   el-container#app
 
     el-header
-      el-menu(mode="horizontal")
-        el-menu-item(index="1")
-          router-link(to="/")
-            | Home
-        el-menu-item(index="2")
-          router-link(to="/about")
-            | About
+      el-menu(
+        mode="horizontal"
+        :router="true"
+      )
+        el-menu-item(index="/message-board")
+          | Message Board
 
     el-main
       router-view
