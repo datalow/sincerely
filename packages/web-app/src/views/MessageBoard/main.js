@@ -12,6 +12,10 @@ const methods = mapActions([
   'viewAllMessages'
 ])
 
+function mounted () {
+  return this.viewAllMessages()
+}
+
 export default {
   name: 'MessageBoard',
   components: {
@@ -19,5 +23,6 @@ export default {
     MessageForm
   },
   computed,
-  methods
+  methods,
+  mounted
 }

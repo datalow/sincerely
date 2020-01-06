@@ -3,8 +3,9 @@
     el-form-item
       el-input(
         type="tel"
-        v-model="form.receiverNumber"
+        v-model.number="form.receiverNumber"
       )
+         template(slot="prepend") +
     el-form-item
       el-input(
         type="textarea"
