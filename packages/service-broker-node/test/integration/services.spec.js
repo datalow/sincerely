@@ -4,13 +4,11 @@ import Path from 'path'
 
 import { ServiceBroker } from 'moleculer'
 
+import services from '../../services'
+
 // settings
 
 const SERVICEDIR = Path.join(__dirname, '../../services')
-
-const SERVICES = [
-  'greeter'
-]
 
 // macros
 
@@ -32,4 +30,6 @@ assertServiceMacro.title = (_, name) => name
 
 // tests
 
-SERVICES.forEach(name => test(assertServiceMacro, name))
+for (const name in services) {
+  test(assertServiceMacro, name)
+}

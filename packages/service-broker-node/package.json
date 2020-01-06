@@ -22,11 +22,13 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "lint-staged": "^9.4.2",
+    "matchdep": "^2.0.0",
     "moleculer-repl": "^0.6.2",
     "nyc": "^14.1.1"
   },
   "dependencies": {
     "@datalow/sincerely-service-module-greeter": "*",
+    "@datalow/sincerely-service-module-message-board": "*",
     "moleculer": "^0.13.12"
   }
 }
