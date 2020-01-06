@@ -1,34 +1,32 @@
 {
-  "name": "@datalow/sincerely-service-broker-node",
+  "name": "@datalow/sincerely-service-module-message-board",
   "version": "0.0.0",
-  "description": "Services broker with Moleculer framework",
+  "description": "Message board",
   "license": "MIT",
+  "main": "index.js",
   "scripts": {
-    "dev": "moleculer-runner --repl --hot services",
-    "start": "moleculer-runner",
     "test": "ava",
     "test:coverage": "nyc ava -v",
-    "lint": "eslint --fix services/**/*.js",
+    "lint": "eslint --fix index.js src/**/*.js",
     "lint:staged": "lint-staged",
     "precommit": "npm run lint:staged",
     "prepush": "npm run lint && npm test"
   },
   "devDependencies": {
     "ava": "^2.4.0",
+    "decamelize": "^3.2.0",
     "eslint": "^6.7.2",
     "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "lint-staged": "^9.4.2",
-    "matchdep": "^2.0.0",
-    "moleculer-repl": "^0.6.2",
-    "nyc": "^14.1.1"
+    "moleculer": "^0.13.12",
+    "nyc": "^14.1.1",
+    "pkginfo": "^0.4.1"
   },
   "dependencies": {
-    "@datalow/sincerely-service-module-greeter": "*",
-    "@datalow/sincerely-service-module-message-board": "*",
-    "moleculer": "^0.13.12"
+    "ulid": "^2.3.0"
   }
 }
